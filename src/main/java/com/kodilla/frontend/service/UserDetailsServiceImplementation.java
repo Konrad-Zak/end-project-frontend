@@ -1,5 +1,6 @@
 package com.kodilla.frontend.service;
 
+import com.kodilla.frontend.client.AppUserClient;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,10 +11,10 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserDetailsServiceImplementation implements UserDetailsService {
 
-    private BackendClient backendClient;
+    private AppUserClient appUserClient;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return backendClient.getAppUser(username);
+        return appUserClient.getAppUser(username);
     }
 }

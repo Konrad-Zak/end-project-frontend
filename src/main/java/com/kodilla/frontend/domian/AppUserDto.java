@@ -18,7 +18,7 @@ import java.util.Collections;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AppUser implements UserDetails {
+public class AppUserDto implements UserDetails {
     @JsonProperty("id")
     private Long id;
 

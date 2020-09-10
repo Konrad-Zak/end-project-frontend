@@ -1,11 +1,11 @@
-package com.kodilla.frontend.service;
+package com.kodilla.frontend.client.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class mas {
+public class CoreConfiguration {
     @Bean
     public RestTemplate restTemplate(){
         return new RestTemplate();

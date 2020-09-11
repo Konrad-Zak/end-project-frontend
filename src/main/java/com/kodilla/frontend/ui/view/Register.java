@@ -1,38 +1,30 @@
 package com.kodilla.frontend.ui.view;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import lombok.Getter;
 
+@Getter
+@CssImport("./style.css")
 @Route("register")
 public class Register extends FormLayout {
 
     private TextField username = new TextField("Login");
     private PasswordField password = new PasswordField("Password");
     private Button button = new Button("Register");
-
-
+    private Button back = new Button("Back");
 
     public Register() {
-        addClassName("form");
+        addClassName("register-form");
+        back.setClassName("back-button");
         setResponsiveSteps(
                 new ResponsiveStep("10%", 1),
                 new ResponsiveStep("10%", 1));
-        add(username, password, button);
-    }
-
-    public Button getButton() {
-        return button;
-    }
-
-    public TextField getUsername() {
-        return username;
-    }
-
-    public PasswordField getPassword() {
-        return password;
+        add(username, password, button, back);
     }
 
 }

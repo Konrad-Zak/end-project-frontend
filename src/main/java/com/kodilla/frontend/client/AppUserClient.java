@@ -17,11 +17,27 @@ public class AppUserClient {
     private BackendConfig backendConfig;
 
     public AppUserDto getAppUser(String username){
-        URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendApiEndpoint() + "/appUsers")
+        URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendAppUsersApiEndpoint())
                 .queryParam("username", username)
                 .build().encode().toUri();
 
         return restTemplate.getForObject(uri, AppUserDto.class);
+    }
+
+    public Boolean checkUserInDB(String username){
+        URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendAppUsersApiEndpoint() + "/check")
+                .queryParam("username", username)
+                .build().encode().toUri();
+        return restTemplate.getForObject(uri, Boolean.class);
+    }
+
+    public Boolean createNewUser(String username, String password){
+        URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendAppUsersApiEndpoint())
+                .queryParam("username", username)
+                .queryParam("password", password)
+                .build().encode().toUri();
+
+        return restTemplate.postForObject(uri,null, Boolean.class);
     }
 
 }

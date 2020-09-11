@@ -1,0 +1,15 @@
+
+.register-form{
+    margin: auto;
+    max-width: 30%;
+}
+
+.profile-form{
+    margin: auto;
+    max-width: 30%;
+}
+
+.back-button{
+    background-color: #3b5998;
+    color: aliceblue;
+}

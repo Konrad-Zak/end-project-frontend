@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 @Getter
 public class BackendConfig {
 
-    @Value("${backend.api.endpoint.prod}")
-    private String backendApiEndpoint;
+    @Value("${backend.api.endpoint.appUsers}")
+    private String backendAppUsersApiEndpoint;
 }

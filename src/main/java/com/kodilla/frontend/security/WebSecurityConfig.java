@@ -1,6 +1,6 @@
 package com.kodilla.frontend.security;
 
-import com.kodilla.frontend.service.UserDetailsServiceImplementation;
+import com.kodilla.frontend.service.AppUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_URL = "/login";
     private static final String LOGOUT_SUCCESS_URL = "/login";
 
-    private UserDetailsServiceImplementation userDetailsService;
+    private AppUserService appUserService;
 
     @Bean
     public PasswordEncoder getPasswordEncoder(){
@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(appUserService);
     }
 
     @Override

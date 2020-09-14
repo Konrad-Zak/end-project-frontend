@@ -11,14 +11,14 @@ import lombok.Getter;
 @Getter
 @CssImport("./style.css")
 @Route("register")
-public class Register extends FormLayout {
+public class RegisterView extends FormLayout {
 
     private TextField username = new TextField("Login");
     private PasswordField password = new PasswordField("Password");
     private Button button = new Button("Register");
     private Button back = new Button("Back");
 
-    public Register() {
+    public RegisterView() {
         addClassName("register-form");
         back.setClassName("back-button");
         setResponsiveSteps(

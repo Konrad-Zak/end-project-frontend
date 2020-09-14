@@ -40,4 +40,5 @@ public class AppUserClient {
         return restTemplate.postForObject(uri,null, Boolean.class);
     }
 
+
 }

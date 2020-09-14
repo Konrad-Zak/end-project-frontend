@@ -1,3 +1,16 @@
+a[highlight] {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.header {
+    padding: 0 var(--lumo-space-m);
+}
+
+.header h1.logo {
+    font-size: 1em;
+    margin: var(--lumo-space-m);
+}
 
 .register-form{
     margin: auto;
@@ -12,4 +25,26 @@
 .back-button{
     background-color: #3b5998;
     color: aliceblue;
+}
+
+.curio-view h1{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5%;
+}
+.curio-view h2{
+    margin-left: auto;
+    margin-right: auto;
+}
+.curio-view h3{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-view h1{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+    font-family: 'Ranchers', cursive;
+    font-size: 400%;
 }

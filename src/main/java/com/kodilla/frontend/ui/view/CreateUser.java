@@ -12,7 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
-@Route(value = "", layout = MainView.class)
+@Route(value = "createUser", layout = MainView.class)
 public class CreateUser extends FormLayout {
     TextField username = new TextField("Username");
     PasswordField password = new PasswordField("Password");

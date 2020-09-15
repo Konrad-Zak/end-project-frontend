@@ -1,5 +1,7 @@
 package com.kodilla.frontend.ui.view;
 
+import com.kodilla.frontend.domian.AppUser;
+import com.kodilla.frontend.security.SecurityUtils;
 import com.kodilla.frontend.service.AppUserService;
 import com.kodilla.frontend.validate.ValidateFormField;
 import com.vaadin.flow.component.html.H1;
@@ -19,7 +21,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     private final static String CREATE_USER_ERROR = "Something go wrong";
 
     private LoginForm login = new LoginForm();
-    private Register register = new Register();
+    private RegisterView registerView = new RegisterView();
     private LoginI18n loginI18n = LoginI18n.createDefault();
     private Notification registerErrorNotification = new Notification(ERROR_NOTIFICATION,3000);
     private Notification registerOkNotification = new Notification(OK_NOTIFICATION,3000);
@@ -29,10 +31,13 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     public LoginView(AppUserService appUserService){
         this.appUserService = appUserService;
         prepareLoginForm();
-        add(new H1("App nutritional plan"),login , register);
+        add(new H1("App nutritional plan"),login , registerView);
         clickRegisterNewUserButton();
         clickRegisterButton();
         clickRegisterBackButton();
+        login.addLoginListener(event -> {
+            AppUser.getInstance().setUsername(event.getUsername());
+        });
     }
 
 
@@ -47,7 +52,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void clickRegisterBackButton() {
-        register.getBack().addClickListener(event -> {
+        registerView.getBack().addClickListener(event -> {
             clearRegisterFields();
             goToLogin();
         });
@@ -58,7 +63,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void clickRegisterButton() {
-        register.getButton().addClickListener(event -> {
+        registerView.getButton().addClickListener(event -> {
             if(validateFieldsData()){
                 startCreateNewUser();
             } else {
@@ -69,12 +74,12 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
 
     private boolean validateFieldsData() {
-        return ValidateFormField.getInstance().validateUsernameField(register.getUsername().getValue()) &&
-                ValidateFormField.getInstance().validatePasswordField(register.getPassword().getValue());
+        return ValidateFormField.getInstance().validateUsernameField(registerView.getUsername().getValue()) &&
+                ValidateFormField.getInstance().validatePasswordField(registerView.getPassword().getValue());
     }
 
     private void startCreateNewUser() {
-        if(appUserService.checkExistByUsername(register.getUsername().getValue())){
+        if(appUserService.checkExistByUsername(registerView.getUsername().getValue())){
             registerErrorNotification.open();
         } else {
             createNewUser();
@@ -82,7 +87,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void createNewUser() {
-        if(appUserService.createNewUser(register.getUsername().getValue(),register.getPassword().getValue())){
+        if(appUserService.createNewUser(registerView.getUsername().getValue(), registerView.getPassword().getValue())){
             registerOkNotification.open();
             goToLogin();
             clearRegisterFields();
@@ -92,18 +97,18 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void goToRegister() {
-        register.setVisible(true);
+        registerView.setVisible(true);
         login.setVisible(false);
     }
 
     private void goToLogin(){
-        register.setVisible(false);
+        registerView.setVisible(false);
         login.setVisible(true);
     }
 
     private void clearRegisterFields() {
-        register.getUsername().setValue("");
-        register.getPassword().setValue("");
+        registerView.getUsername().setValue("");
+        registerView.getPassword().setValue("");
     }
 
     private void prepareLoginForm() {
@@ -112,7 +117,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         loginI18n.getForm().setForgotPassword("Register new user");
         login.setI18n(loginI18n);
         login.setAction("login");
-        register.setVisible(false);
+        registerView.setVisible(false);
     }
 
 }

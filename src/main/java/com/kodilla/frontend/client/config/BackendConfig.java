@@ -10,4 +10,7 @@ public class BackendConfig {
 
     @Value("${backend.api.endpoint.appUsers}")
     private String backendAppUsersApiEndpoint;
+
+    @Value("${backend.api.endpoint.curio}")
+    private String backendCurioApiEndpoint;
 }

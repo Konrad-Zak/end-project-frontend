@@ -12,14 +12,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
-@Route(value = "", layout = MainView.class)
+@Route(value = "createUser", layout = MainView.class)
 public class CreateUser extends FormLayout {
     TextField username = new TextField("Username");
     PasswordField password = new PasswordField("Password");
     Button create = new Button("Create");
 
-    public CreateUser(){
 
+    public CreateUser(){
         add(username,password,create);
         create.addClickListener(event -> {
             AppUserDto appUserDto = b();

@@ -1,6 +1,8 @@
 package com.kodilla.frontend.ui;
 
-import com.kodilla.frontend.client.config.Curio;
+import com.kodilla.frontend.domian.CurioMap;
+import com.kodilla.frontend.domian.AppUser;
+import com.kodilla.frontend.security.SecurityUtils;
 import com.kodilla.frontend.ui.view.CreateUser;
 import com.kodilla.frontend.ui.view.CurioView;
 import com.kodilla.frontend.ui.view.HomeView;
@@ -14,6 +16,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.HighlightConditions;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.VaadinSession;
+
 
 @CssImport("./style.css")
 public class MainView extends AppLayout {
@@ -21,6 +25,10 @@ public class MainView extends AppLayout {
     private Anchor logout = new Anchor("logout", "Log out");
 
     public MainView() {
+        if(SecurityUtils.isUserLoggedIn()){
+            String usernameSession = AppUser.getInstance().getUsername();
+            System.out.println(usernameSession);
+        }
         createHeader();
         createDrawer();
         clickLogout();
@@ -44,12 +52,12 @@ public class MainView extends AppLayout {
         addToDrawer(new VerticalLayout(routerLink,
                     new RouterLink("Curio", CurioView.class),
                     new RouterLink("CreateUser",CreateUser.class)));
+
     }
 
     private void clickLogout(){
         logout.addAttachListener(event -> {
-            Curio.getInstance().setText(null);
-            Curio.getInstance().setYear(null);
+            CurioMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
         });
     }
 

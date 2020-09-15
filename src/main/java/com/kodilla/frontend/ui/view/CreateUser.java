@@ -18,8 +18,8 @@ public class CreateUser extends FormLayout {
     PasswordField password = new PasswordField("Password");
     Button create = new Button("Create");
 
-    public CreateUser(){
 
+    public CreateUser(){
         add(username,password,create);
         create.addClickListener(event -> {
             AppUserDto appUserDto = b();

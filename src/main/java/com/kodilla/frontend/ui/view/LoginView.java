@@ -1,5 +1,7 @@
 package com.kodilla.frontend.ui.view;
 
+import com.kodilla.frontend.domian.AppUser;
+import com.kodilla.frontend.security.SecurityUtils;
 import com.kodilla.frontend.service.AppUserService;
 import com.kodilla.frontend.validate.ValidateFormField;
 import com.vaadin.flow.component.html.H1;
@@ -33,6 +35,9 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         clickRegisterNewUserButton();
         clickRegisterButton();
         clickRegisterBackButton();
+        login.addLoginListener(event -> {
+            AppUser.getInstance().setUsername(event.getUsername());
+        });
     }
 
 

@@ -1,6 +1,6 @@
 package com.kodilla.frontend.ui.view;
 
-import com.kodilla.frontend.client.config.Curio;
+import com.kodilla.frontend.domian.CurioMap;
 import com.kodilla.frontend.domian.CurioDto;
 import com.kodilla.frontend.service.CurioService;
 import com.kodilla.frontend.ui.MainView;
@@ -8,9 +8,9 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 
 @CssImport("./style.css")
 @Route(value = "curio", layout = MainView.class)
@@ -29,21 +29,20 @@ public class CurioView extends VerticalLayout {
     }
 
     private void showCurio() {
-        if(Curio.getInstance().getText() == null){
+        if(CurioMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
+            curioText.setText(CurioMap.getInstance().getCurioDtoByKey(VaadinSession.getCurrent()).getText());
+            curioYear.setText("Year: " + CurioMap.getInstance().getCurioDtoByKey(VaadinSession.getCurrent()).getYear());
+            add(curioHeader,curioText,curioYear);
+        } else {
             curioText.setText(DEFAULT_TEXT);
             add(curioText);
-        } else {
-            curioText.setText(Curio.getInstance().getText());
-            curioYear.setText("Year: " + Curio.getInstance().getYear());
-            add(curioHeader,curioText,curioYear);
         }
     }
 
     private void readCurio(){
-        if(Curio.getInstance().getText() == null){
+        if(!CurioMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
             CurioDto curioDto = curioService.getCurioDto();
-            Curio.getInstance().setText(curioDto.getText());
-            Curio.getInstance().setYear(curioDto.getYear());
+            CurioMap.getInstance().addToMap(VaadinSession.getCurrent(),curioDto);
         }
     }
 

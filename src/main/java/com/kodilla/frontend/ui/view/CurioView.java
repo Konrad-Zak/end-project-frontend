@@ -26,6 +26,7 @@ public class CurioView extends VerticalLayout {
         setClassName("curio-view");
         readCurio();
         showCurio();
+        System.out.println(VaadinSession.getCurrent());
     }
 
     private void showCurio() {

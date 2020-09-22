@@ -1,6 +1,7 @@
 package com.kodilla.frontend.service;
 
 import com.kodilla.frontend.client.AppUserClient;
+import com.kodilla.frontend.domian.AppUserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +16,9 @@ public class AppUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return appUserClient.getAppUser(username);
+        AppUserDto appUserDto = appUserClient.getAppUser(username);
+        System.out.println(appUserDto.getId() + " " + appUserDto.getUsername());
+        return appUserDto;
     }
 
     public Boolean checkExistByUsername(String username){

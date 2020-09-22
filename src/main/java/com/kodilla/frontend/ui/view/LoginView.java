@@ -12,6 +12,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 
 @Route("login")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
@@ -29,6 +30,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     private AppUserService appUserService;
 
     public LoginView(AppUserService appUserService){
+        System.out.println(VaadinSession.getCurrent());
         this.appUserService = appUserService;
         prepareLoginForm();
         add(new H1("App nutritional plan"),login , registerView);

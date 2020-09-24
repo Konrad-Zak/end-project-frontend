@@ -1,8 +1,9 @@
 package com.kodilla.frontend.ui;
 
-import com.kodilla.frontend.domian.CurioMap;
+import com.kodilla.frontend.domian.CurioDtoMap;
 import com.kodilla.frontend.domian.AppUser;
 import com.kodilla.frontend.security.SecurityUtils;
+import com.kodilla.frontend.ui.view.ChangePasswordView;
 import com.kodilla.frontend.ui.view.CreateUser;
 import com.kodilla.frontend.ui.view.CurioView;
 import com.kodilla.frontend.ui.view.HomeView;
@@ -25,10 +26,6 @@ public class MainView extends AppLayout {
     private Anchor logout = new Anchor("logout", "Log out");
 
     public MainView() {
-        if(SecurityUtils.isUserLoggedIn()){
-            String usernameSession = AppUser.getInstance().getUsername();
-            System.out.println(usernameSession);
-        }
         createHeader();
         createDrawer();
         clickLogout();
@@ -47,17 +44,18 @@ public class MainView extends AppLayout {
     }
 
     private void createDrawer() {
-        RouterLink routerLink = new RouterLink("Home", HomeView.class);
-        routerLink.setHighlightCondition(HighlightConditions.sameLocation());
-        addToDrawer(new VerticalLayout(routerLink,
+        RouterLink home = new RouterLink("Home", HomeView.class);
+        home.setHighlightCondition(HighlightConditions.sameLocation());
+        addToDrawer(new VerticalLayout(home,
                     new RouterLink("Curio", CurioView.class),
+                    new RouterLink("Change Password", ChangePasswordView.class),
                     new RouterLink("CreateUser",CreateUser.class)));
 
     }
 
     private void clickLogout(){
         logout.addAttachListener(event -> {
-            CurioMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
+            CurioDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
         });
     }
 

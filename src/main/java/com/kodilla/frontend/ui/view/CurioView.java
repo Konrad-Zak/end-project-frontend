@@ -1,6 +1,6 @@
 package com.kodilla.frontend.ui.view;
 
-import com.kodilla.frontend.domian.CurioMap;
+import com.kodilla.frontend.domian.CurioDtoMap;
 import com.kodilla.frontend.domian.CurioDto;
 import com.kodilla.frontend.service.CurioService;
 import com.kodilla.frontend.ui.MainView;
@@ -30,9 +30,9 @@ public class CurioView extends VerticalLayout {
     }
 
     private void showCurio() {
-        if(CurioMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
-            curioText.setText(CurioMap.getInstance().getCurioDtoByKey(VaadinSession.getCurrent()).getText());
-            curioYear.setText("Year: " + CurioMap.getInstance().getCurioDtoByKey(VaadinSession.getCurrent()).getYear());
+        if(CurioDtoMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
+            curioText.setText(CurioDtoMap.getInstance().getCurioDtoByKey(VaadinSession.getCurrent()).getText());
+            curioYear.setText("Year: " + CurioDtoMap.getInstance().getCurioDtoByKey(VaadinSession.getCurrent()).getYear());
             add(curioHeader,curioText,curioYear);
         } else {
             curioText.setText(DEFAULT_TEXT);
@@ -41,9 +41,10 @@ public class CurioView extends VerticalLayout {
     }
 
     private void readCurio(){
-        if(!CurioMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
+        if(!CurioDtoMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
             CurioDto curioDto = curioService.getCurioDto();
-            CurioMap.getInstance().addToMap(VaadinSession.getCurrent(),curioDto);
+            CurioDtoMap.getInstance().addToMap(VaadinSession.getCurrent(),curioDto);
+            System.out.println(CurioDtoMap.getInstance().getMap());
         }
     }
 

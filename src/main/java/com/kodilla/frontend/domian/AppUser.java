@@ -1,18 +1,16 @@
 package com.kodilla.frontend.domian;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class AppUser {
-    private static AppUser appUser;
+    private Long id;
     private String username;
+    private String password;
 
-    public static AppUser getInstance() {
-        if (appUser == null) {
-            appUser = new AppUser();
-        }
-        return appUser;
+    public AppUser(Long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
     }
 }

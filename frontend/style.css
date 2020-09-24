@@ -22,6 +22,11 @@ a[highlight] {
     max-width: 30%;
 }
 
+.changePassword-form{
+    margin: auto;
+    max-width: 30%;
+}
+
 .back-button{
     background-color: #3b5998;
     color: aliceblue;

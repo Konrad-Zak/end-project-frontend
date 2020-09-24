@@ -1,7 +1,7 @@
 package com.kodilla.frontend.ui.view;
 
-import com.kodilla.frontend.domian.AppUser;
-import com.kodilla.frontend.security.SecurityUtils;
+import com.kodilla.frontend.domian.AppUserDto;
+import com.kodilla.frontend.domian.AppUserDtoMap;
 import com.kodilla.frontend.service.AppUserService;
 import com.kodilla.frontend.validate.ValidateFormField;
 import com.vaadin.flow.component.html.H1;
@@ -37,9 +37,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         clickRegisterNewUserButton();
         clickRegisterButton();
         clickRegisterBackButton();
-        login.addLoginListener(event -> {
-            AppUser.getInstance().setUsername(event.getUsername());
-        });
+        clickLoginButton();
     }
 
 
@@ -51,6 +49,16 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
                 .containsKey("error")) {
             login.setError(true);
         }
+    }
+
+    private void clickLoginButton(){
+        login.addLoginListener(event -> {
+            if(appUserService.checkExistByUsername(event.getUsername())) {
+                AppUserDto appUserDto = appUserService.loadUserByUsername(event.getUsername());
+                AppUserDtoMap.getInstance().addToMap(VaadinSession.getCurrent(), appUserDto);
+                System.out.println(AppUserDtoMap.getInstance().getAppUserMap());
+            }
+        });
     }
 
     private void clickRegisterBackButton() {

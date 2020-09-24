@@ -6,17 +6,18 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.Map;
 @Getter
-public class CurioMap {
+public class CurioDtoMap {
 
-    private static CurioMap curioMap = null;
+    private static CurioDtoMap curioDtoMap = null;
     private Map<VaadinSession, CurioDto> map = new HashMap<>();
 
-    public static CurioMap getInstance() {
-        if (curioMap == null) {
-            curioMap = new CurioMap();
+    public static CurioDtoMap getInstance() {
+        if (curioDtoMap == null) {
+            curioDtoMap = new CurioDtoMap();
         }
-        return curioMap;
+        return curioDtoMap;
     }
+
 
     public void addToMap(VaadinSession vaadinSession, CurioDto curioDto){
         map.put(vaadinSession,curioDto);
@@ -29,5 +30,4 @@ public class CurioMap {
     public CurioDto getCurioDtoByKey(VaadinSession vaadinSession){
         return map.get(vaadinSession);
     }
-
 }

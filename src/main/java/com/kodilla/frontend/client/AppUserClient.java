@@ -1,6 +1,7 @@
 package com.kodilla.frontend.client;
 
 import com.kodilla.frontend.client.config.BackendConfig;
+import com.kodilla.frontend.domian.AppUser;
 import com.kodilla.frontend.domian.AppUserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -38,6 +39,10 @@ public class AppUserClient {
                 .build().encode().toUri();
 
         return restTemplate.postForObject(uri,null, Boolean.class);
+    }
+
+    public void changeUserPassword(AppUser appUser){
+        restTemplate.put(backendConfig.getBackendAppUsersApiEndpoint(), appUser);
     }
 
 

@@ -24,7 +24,7 @@ public class ChangePasswordView extends FormLayout {
     private final static String NOT_NOTIFICATION = "Change password error";
 
     private TextField loginName = new TextField("Login");
-    private PasswordField newPassword = new PasswordField("New password");
+    private PasswordField passwordField = new PasswordField("New password");
     private Button upgradeButton = new Button("Change Password");
     private Notification changePasswordIsOk = new Notification(OK_NOTIFICATION,3000);
     private Notification changePasswordIsNotOk = new Notification(NOT_NOTIFICATION, 3000);
@@ -34,7 +34,7 @@ public class ChangePasswordView extends FormLayout {
         this.appUserService = appUserService;
         initView();
         clickUpgradeButton();
-        add(loginName,newPassword, upgradeButton);
+        add(loginName, passwordField, upgradeButton);
     }
 
     private void initView(){
@@ -48,13 +48,13 @@ public class ChangePasswordView extends FormLayout {
 
     private void clickUpgradeButton(){
         upgradeButton.addClickListener(event -> {
-
-            if(ValidateFormField.getInstance().validatePasswordField(newPassword.getValue())){
+            if(ValidateFormField.getInstance().validatePasswordField(passwordField.getValue())){
                 AppUserDto appUserDto = AppUserDtoMap.getInstance().getAppUserDtoByKey(VaadinSession.getCurrent());
                 appUserService.changeUserPassword(
-                        new AppUser(appUserDto.getId(), appUserDto.getUsername(), newPassword.getValue())
+                        new AppUser(appUserDto.getId(), appUserDto.getUsername(), passwordField.getValue())
                 );
                 changePasswordIsOk.open();
+                passwordField.setValue("");
             } else {
                 changePasswordIsNotOk.open();
             }

@@ -13,4 +13,5 @@ public class AppUser {
         this.username = username;
         this.password = password;
     }
+
 }

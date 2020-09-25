@@ -50,6 +50,7 @@ public class ChangePasswordView extends FormLayout {
         upgradeButton.addClickListener(event -> {
             if(ValidateFormField.getInstance().validatePasswordField(passwordField.getValue())){
                 AppUserDto appUserDto = AppUserDtoMap.getInstance().getAppUserDtoByKey(VaadinSession.getCurrent());
+                appUserDto.setPassword(passwordField.getValue());
                 appUserService.changeUserPassword(
                         new AppUser(appUserDto.getId(), appUserDto.getUsername(), passwordField.getValue())
                 );

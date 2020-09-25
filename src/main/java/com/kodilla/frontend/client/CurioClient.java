@@ -1,7 +1,6 @@
 package com.kodilla.frontend.client;
 
 import com.kodilla.frontend.client.config.BackendConfig;
-import com.kodilla.frontend.domian.AppUserDto;
 import com.kodilla.frontend.domian.CurioDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -1,10 +1,8 @@
 package com.kodilla.frontend.ui;
 
 import com.kodilla.frontend.domian.CurioDtoMap;
-import com.kodilla.frontend.domian.AppUser;
-import com.kodilla.frontend.security.SecurityUtils;
 import com.kodilla.frontend.ui.view.ChangePasswordView;
-import com.kodilla.frontend.ui.view.CreateUser;
+import com.kodilla.frontend.ui.view.UserInfoView;
 import com.kodilla.frontend.ui.view.CurioView;
 import com.kodilla.frontend.ui.view.HomeView;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -49,7 +47,7 @@ public class MainView extends AppLayout {
         addToDrawer(new VerticalLayout(home,
                     new RouterLink("Curio", CurioView.class),
                     new RouterLink("Change Password", ChangePasswordView.class),
-                    new RouterLink("CreateUser",CreateUser.class)));
+                    new RouterLink("User Info", UserInfoView.class)));
 
     }
 

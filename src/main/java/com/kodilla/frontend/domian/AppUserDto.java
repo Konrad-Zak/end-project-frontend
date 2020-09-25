@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -28,6 +27,7 @@ public class AppUserDto implements UserDetails {
     private boolean credentialsNonExpired;
     private com.kodilla.frontend.domian.GrantedAuthority[] authorities;
     private boolean accountNonLocked;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

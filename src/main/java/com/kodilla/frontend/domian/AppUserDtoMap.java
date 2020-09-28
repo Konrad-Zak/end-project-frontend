@@ -19,7 +19,7 @@ public class AppUserDtoMap {
         return appUserDtoMap;
     }
 
-    public void addToMap( VaadinSession vaadinSession, AppUserDto appUserDto){
+    public void addToMap( VaadinSession vaadinSession, AppUserDto appUserDto) {
         appUserMap.put(vaadinSession,appUserDto);
     }
 

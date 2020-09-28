@@ -13,7 +13,7 @@ public class HomeView extends VerticalLayout {
 
     H1 h1 = new H1("Welcome in App nutritional ");
 
-    public HomeView(){
+    public HomeView() {
         addClassName("home-view");
         add(h1);
     }

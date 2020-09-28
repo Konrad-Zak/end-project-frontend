@@ -16,7 +16,7 @@ public class CurioClient {
     private RestTemplate restTemplate;
     private BackendConfig backendConfig;
 
-    public CurioDto getCurio(){
+    public CurioDto getCurio() {
         URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendCurioApiEndpoint())
                 .build().encode().toUri();
 

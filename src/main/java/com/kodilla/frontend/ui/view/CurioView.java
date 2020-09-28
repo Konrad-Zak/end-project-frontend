@@ -21,12 +21,11 @@ public class CurioView extends VerticalLayout {
     H3 curioYear = new H3();
     private CurioService curioService;
 
-    public CurioView(CurioService curioService){
+    public CurioView(CurioService curioService) {
         this.curioService = curioService;
         setClassName("curio-view");
         readCurio();
         showCurio();
-        System.out.println(VaadinSession.getCurrent());
     }
 
     private void showCurio() {
@@ -40,7 +39,7 @@ public class CurioView extends VerticalLayout {
         }
     }
 
-    private void readCurio(){
+    private void readCurio() {
         if(!CurioDtoMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
             CurioDto curioDto = curioService.getCurioDto();
             CurioDtoMap.getInstance().addToMap(VaadinSession.getCurrent(),curioDto);

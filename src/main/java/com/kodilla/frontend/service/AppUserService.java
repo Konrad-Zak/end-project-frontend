@@ -26,11 +26,11 @@ public class AppUserService implements UserDetailsService {
         return appUserClient.checkUserInDB(username);
     }
 
-    public Boolean createNewUser(String username, String password){
+    public Boolean createNewUser(String username, String password) {
         return appUserClient.createNewUser(username, password);
     }
 
-    public void changeUserPassword(AppUser appUser){
+    public void changeUserPassword(AppUser appUser) {
         appUserClient.changeUserPassword(appUser);
     }
 }

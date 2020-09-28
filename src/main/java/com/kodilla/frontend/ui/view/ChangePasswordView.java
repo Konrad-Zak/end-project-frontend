@@ -29,15 +29,17 @@ public class ChangePasswordView extends FormLayout {
     private Notification changePasswordIsOk = new Notification(OK_NOTIFICATION,3000);
     private Notification changePasswordIsNotOk = new Notification(NOT_NOTIFICATION, 3000);
     private AppUserService appUserService;
+    private ValidateFormField validateFormField;
 
-    public ChangePasswordView(AppUserService appUserService) {
+    public ChangePasswordView(AppUserService appUserService, ValidateFormField validateFormField) {
+        this.validateFormField = validateFormField;
         this.appUserService = appUserService;
         initView();
         clickUpgradeButton();
         add(loginName, passwordField, upgradeButton);
     }
 
-    private void initView(){
+    private void initView() {
         addClassName("changePassword-form");
         loginName.setValue(AppUserDtoMap.getInstance().getAppUserDtoByKey(VaadinSession.getCurrent()).getUsername());
         loginName.setReadOnly(true);
@@ -46,9 +48,9 @@ public class ChangePasswordView extends FormLayout {
                 new ResponsiveStep("10%", 1));
     }
 
-    private void clickUpgradeButton(){
+    private void clickUpgradeButton() {
         upgradeButton.addClickListener(event -> {
-            if(ValidateFormField.getInstance().validatePasswordField(passwordField.getValue())){
+            if(validateFormField.validatePasswordField(passwordField.getValue())){
                 AppUserDto appUserDto = AppUserDtoMap.getInstance().getAppUserDtoByKey(VaadinSession.getCurrent());
                 appUserDto.setPassword(passwordField.getValue());
                 appUserService.changeUserPassword(

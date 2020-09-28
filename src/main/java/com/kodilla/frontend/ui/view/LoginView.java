@@ -28,9 +28,10 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     private Notification registerOkNotification = new Notification(OK_NOTIFICATION,3000);
     private Notification registerCreateUserError = new Notification(CREATE_USER_ERROR,3000);
     private AppUserService appUserService;
+    private ValidateFormField validateFormField;
 
-    public LoginView(AppUserService appUserService){
-        System.out.println(VaadinSession.getCurrent());
+    public LoginView(AppUserService appUserService, ValidateFormField validateFormField) {
+        this.validateFormField = validateFormField;
         this.appUserService = appUserService;
         prepareLoginForm();
         add(new H1("App nutritional plan"),login , registerView);
@@ -51,12 +52,11 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         }
     }
 
-    private void clickLoginButton(){
+    private void clickLoginButton() {
         login.addLoginListener(event -> {
             if(appUserService.checkExistByUsername(event.getUsername())) {
                 AppUserDto appUserDto = appUserService.loadUserByUsername(event.getUsername());
                 AppUserDtoMap.getInstance().addToMap(VaadinSession.getCurrent(), appUserDto);
-                System.out.println(AppUserDtoMap.getInstance().getAppUserMap());
             }
         });
     }
@@ -84,8 +84,8 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
 
     private boolean validateFieldsData() {
-        return ValidateFormField.getInstance().validateUsernameField(registerView.getUsername().getValue()) &&
-                ValidateFormField.getInstance().validatePasswordField(registerView.getPassword().getValue());
+        return validateFormField.validateUsernameField(registerView.getUsername().getValue()) &&
+                validateFormField.validatePasswordField(registerView.getPassword().getValue());
     }
 
     private void startCreateNewUser() {
@@ -111,7 +111,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         login.setVisible(false);
     }
 
-    private void goToLogin(){
+    private void goToLogin() {
         registerView.setVisible(false);
         login.setVisible(true);
     }

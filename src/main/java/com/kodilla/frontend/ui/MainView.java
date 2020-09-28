@@ -1,5 +1,7 @@
 package com.kodilla.frontend.ui;
 
+import com.kodilla.frontend.domian.AppUserDtoMap;
+import com.kodilla.frontend.domian.AppUserInfoDtoMap;
 import com.kodilla.frontend.domian.CurioDtoMap;
 import com.kodilla.frontend.ui.view.ChangePasswordView;
 import com.kodilla.frontend.ui.view.UserInfoView;
@@ -52,8 +54,10 @@ public class MainView extends AppLayout {
     }
 
     private void clickLogout(){
-        logout.addAttachListener(event -> {
+        logout.addDetachListener(event -> {
+            AppUserInfoDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
             CurioDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
+            AppUserDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
         });
     }
 

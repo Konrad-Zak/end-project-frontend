@@ -27,6 +27,11 @@ a[highlight] {
     max-width: 30%;
 }
 
+.userInfo-form{
+    margin: auto;
+    max-width: 30%;
+}
+
 .back-button{
     background-color: #3b5998;
     color: aliceblue;

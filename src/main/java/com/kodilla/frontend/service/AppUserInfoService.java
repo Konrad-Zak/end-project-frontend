@@ -12,11 +12,15 @@ public class AppUserInfoService {
 
     private AppUserInfoClient appUserInfoClient;
 
-    public void createAppUserInfo(AppUserInfo appUserInfo){
-        appUserInfoClient.createAppUserInfo(appUserInfo);
+    public Boolean createAppUserInfo(AppUserInfo appUserInfo){
+        return appUserInfoClient.createAppUserInfo(appUserInfo);
     }
 
-    public AppUserInfoDto getAppUserInfoByAppUserId(Long appUserId){
+    public AppUserInfoDto getAppUserInfoByAppUserId(Long appUserId) {
         return appUserInfoClient.getAppUserInfoByAppUserId(appUserId);
+    }
+
+    public void updateAppUserInfoDto(AppUserInfo appUserInfo) {
+        appUserInfoClient.updateAppUserInfo(appUserInfo);
     }
 }

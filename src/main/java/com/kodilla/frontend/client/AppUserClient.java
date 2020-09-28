@@ -21,7 +21,7 @@ public class AppUserClient {
     private RestTemplate restTemplate;
     private BackendConfig backendConfig;
 
-    public AppUserDto getAppUser(String username){
+    public AppUserDto getAppUser(String username) {
         try {
             URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendAppUsersApiEndpoint())
                     .queryParam("username", username)
@@ -33,14 +33,14 @@ public class AppUserClient {
         return new AppUserDto();
     }
 
-    public Boolean checkUserInDB(String username){
+    public Boolean checkUserInDB(String username) {
         URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendAppUsersApiEndpoint() + "/check")
                 .queryParam("username", username)
                 .build().encode().toUri();
         return restTemplate.getForObject(uri, Boolean.class);
     }
 
-    public Boolean createNewUser(String username, String password){
+    public Boolean createNewUser(String username, String password) {
         URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendAppUsersApiEndpoint())
                 .queryParam("username", username)
                 .queryParam("password", password)
@@ -49,9 +49,8 @@ public class AppUserClient {
         return restTemplate.postForObject(uri,null, Boolean.class);
     }
 
-    public void changeUserPassword(AppUser appUser){
+    public void changeUserPassword(AppUser appUser) {
         restTemplate.put(backendConfig.getBackendAppUsersApiEndpoint(), appUser);
     }
-
 
 }

@@ -58,3 +58,12 @@ a[highlight] {
     font-family: 'Ranchers', cursive;
     font-size: 400%;
 }
+
+.message-view{
+    align-items: center;
+}
+
+.message-field{
+    min-width: 80%;
+    min-height: 200px;
+}

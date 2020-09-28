@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -32,7 +33,7 @@ public class AppUserInfoClient {
                     .queryParam("appUserId", appUserId)
                     .build().encode().toUri();
             return restTemplate.getForObject(uri, AppUserInfoDto.class);
-        } catch (RuntimeException ex){
+        } catch (HttpClientErrorException ex){
             LOGGER.info("User not found " + ex.getMessage());
             return new AppUserInfoDto();
         }

@@ -43,7 +43,6 @@ public class CurioView extends VerticalLayout {
         if(!CurioDtoMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
             CurioDto curioDto = curioService.getCurioDto();
             CurioDtoMap.getInstance().addToMap(VaadinSession.getCurrent(),curioDto);
-            System.out.println(CurioDtoMap.getInstance().getMap());
         }
     }
 

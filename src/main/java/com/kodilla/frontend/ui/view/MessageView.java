@@ -99,6 +99,7 @@ public class MessageView extends VerticalLayout {
                 new AppUserMessage(emailField.getValue(),messageField.getValue(), LocalDate.now()));
         if(result){
             okNotification.open();
+            messageField.clear();
         } else {
             notOkNotification.open();
         }

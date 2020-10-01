@@ -1,6 +1,6 @@
 package com.kodilla.frontend.service;
 
-import com.kodilla.frontend.client.config.AppUserMessageClient;
+import com.kodilla.frontend.client.AppUserMessageClient;
 import com.kodilla.frontend.domian.AppUserMessage;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

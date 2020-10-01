@@ -117,8 +117,8 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
     }
 
     private void clearRegisterFields() {
-        registerView.getUsername().setValue("");
-        registerView.getPassword().setValue("");
+        registerView.getUsername().clear();
+        registerView.getPassword().clear();
     }
 
     private void prepareLoginForm() {

@@ -1,5 +1,6 @@
-package com.kodilla.frontend.client.config;
+package com.kodilla.frontend.client;
 
+import com.kodilla.frontend.client.config.BackendConfig;
 import com.kodilla.frontend.domian.AppUserMessage;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

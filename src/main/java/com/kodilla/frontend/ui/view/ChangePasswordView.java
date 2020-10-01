@@ -57,7 +57,7 @@ public class ChangePasswordView extends FormLayout {
                         new AppUser(appUserDto.getId(), appUserDto.getUsername(), passwordField.getValue())
                 );
                 changePasswordIsOk.open();
-                passwordField.setValue("");
+                passwordField.clear();
             } else {
                 changePasswordIsNotOk.open();
             }

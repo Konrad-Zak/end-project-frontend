@@ -19,4 +19,8 @@ public class BackendConfig {
 
     @Value("${backend.api.endpoint.appUserMessages}")
     private String backendAppUserMessageEndpoint;
+
+    @Value("${backend.api.endpoint.calorieInfo}")
+    private String backendCalorieInfoEndpoint;
+
 }

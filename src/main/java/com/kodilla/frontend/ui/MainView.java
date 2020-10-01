@@ -47,6 +47,7 @@ public class MainView extends AppLayout {
                     new RouterLink("Curio", CurioView.class),
                     new RouterLink("Change Password", ChangePasswordView.class),
                     new RouterLink("User Info", UserInfoView.class),
+                    new RouterLink("Calorie Calculator", CalorieCalculatorView.class),
                     new RouterLink("Contact", MessageView.class)
         ));
 
@@ -54,6 +55,7 @@ public class MainView extends AppLayout {
 
     private void clickLogout(){
         logout.addDetachListener(event -> {
+            CurioDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
             AppUserInfoDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
             CurioDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());
             AppUserDtoMap.getInstance().deleteCurrentSession(VaadinSession.getCurrent());

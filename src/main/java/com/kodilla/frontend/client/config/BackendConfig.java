@@ -23,4 +23,7 @@ public class BackendConfig {
     @Value("${backend.api.endpoint.calorieInfo}")
     private String backendCalorieInfoEndpoint;
 
+    @Value("${backend.api.endpoint.edamam}")
+    private String backendEdamamEndpoint;
+
 }

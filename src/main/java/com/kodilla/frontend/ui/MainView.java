@@ -48,6 +48,7 @@ public class MainView extends AppLayout {
                     new RouterLink("Change Password", ChangePasswordView.class),
                     new RouterLink("User Info", UserInfoView.class),
                     new RouterLink("Calorie Calculator", CalorieCalculatorView.class),
+                    new RouterLink("Search Food Info", SearchFoodView.class),
                     new RouterLink("Contact", MessageView.class)
         ));
 

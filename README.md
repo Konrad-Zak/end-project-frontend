@@ -1,6 +1,6 @@
 backend project link:
 
-        backend
+        https://github.com/Konrad-Zak/end-project-backend
 
 use server port:
        

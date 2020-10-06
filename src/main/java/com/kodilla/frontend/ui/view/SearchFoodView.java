@@ -58,23 +58,34 @@ public class SearchFoodView extends VerticalLayout {
     }
 
     private void clickSearchButtonProcess() {
+        noFoundInfo.setVisible(false);
         SearchFoodDto searchFoodDto = searchFoodService.getSearchFoodDto(searchFoodField.getValue());
-        if(searchFoodDto.getParsed().size()>0){
+        if(searchFoodDto.getParsed()!=null){
             showResult(searchFoodDto);
         } else {
+            noFoundInfo.setVisible(true);
             noFoundInfo.setText("Sorry but is not info about search food: " + searchFoodField.getValue());
             notOKNotification.open();
         }
     }
 
     private void showResult(SearchFoodDto searchFoodDto) {
-        NutrientDto nutrientDto = searchFoodDto.getParsed().get(0).getFood().getNutrients();
-        foodName.setText(searchFoodDto.getText());
-        grid.removeAllColumns();
-        grid.addColumn(NutrientDto::getProtein).setHeader("Protein [g]");
-        grid.addColumn(NutrientDto::getFat).setHeader("Fat [g]");
-        grid.addColumn(NutrientDto::getCarbohydrates).setHeader("Carbohydrates [g]");
-        grid.addColumn(NutrientDto::getCalories).setHeader("Calories [kcal]");
-        grid.setItems(nutrientDto);
+        if(searchFoodDto.getParsed().size()>0){
+            NutrientDto nutrientDto = searchFoodDto.getParsed().get(0).getFood().getNutrients();
+            foodName.setVisible(true);
+            foodName.setText(searchFoodDto.getText());
+            grid.removeAllColumns();
+            grid.addColumn(NutrientDto::getProtein).setHeader("Protein [g]");
+            grid.addColumn(NutrientDto::getFat).setHeader("Fat [g]");
+            grid.addColumn(NutrientDto::getCarbohydrates).setHeader("Carbohydrates [g]");
+            grid.addColumn(NutrientDto::getCalories).setHeader("Calories [kcal]");
+            grid.setItems(nutrientDto);
+        } else {
+            grid.removeAllColumns();
+            foodName.setVisible(false);
+            noFoundInfo.setVisible(true);
+            noFoundInfo.setText("Sorry but is not info about search food: " + searchFoodField.getValue());
+            notOKNotification.open();
+        }
     }
 }

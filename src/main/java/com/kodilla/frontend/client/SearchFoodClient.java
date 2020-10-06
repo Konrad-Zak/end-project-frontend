@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -26,7 +26,7 @@ public class SearchFoodClient {
                     .queryParam("foodName", foodName)
                     .build().encode().toUri();
             return restTemplate.getForObject(uri, SearchFoodDto.class);
-        } catch (ResponseStatusException ex) {
+        } catch (RuntimeException ex) {
             LOGGER.error("Search food: " + ex);
             return new SearchFoodDto();
         }

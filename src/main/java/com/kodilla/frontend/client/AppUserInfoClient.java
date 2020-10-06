@@ -33,7 +33,7 @@ public class AppUserInfoClient {
                     .queryParam("appUserId", appUserId)
                     .build().encode().toUri();
             return restTemplate.getForObject(uri, AppUserInfoDto.class);
-        } catch (HttpClientErrorException ex){
+        } catch (RuntimeException ex){
             LOGGER.info("User not found " + ex.getMessage());
             return new AppUserInfoDto();
         }

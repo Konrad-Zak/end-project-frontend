@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ParsedDto {
+
     private FoodDto food;
 }

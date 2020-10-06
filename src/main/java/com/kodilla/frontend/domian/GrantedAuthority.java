@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GrantedAuthority implements org.springframework.security.core.GrantedAuthority {
+
     @JsonProperty("authority")
     String authority;
 

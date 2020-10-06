@@ -17,9 +17,9 @@ import com.vaadin.flow.server.VaadinSession;
 @Route("login")
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
-    private final static String ERROR_NOTIFICATION = "User exist with this username";
-    private final static String OK_NOTIFICATION = "New User has been added";
-    private final static String CREATE_USER_ERROR = "Something go wrong";
+    private static final String ERROR_NOTIFICATION = "User exist with this username";
+    private static final String OK_NOTIFICATION = "New User has been added";
+    private static final String CREATE_USER_ERROR = "Something go wrong";
 
     private LoginForm login = new LoginForm();
     private RegisterView registerView = new RegisterView();

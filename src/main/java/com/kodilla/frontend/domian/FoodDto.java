@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FoodDto {
+
     private NutrientDto nutrients;
 }

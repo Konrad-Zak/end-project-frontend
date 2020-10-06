@@ -13,5 +13,4 @@ public class CurioDto {
 
     private String text;
     private Integer year;
-
 }

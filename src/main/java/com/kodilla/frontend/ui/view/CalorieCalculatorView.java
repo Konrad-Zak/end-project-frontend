@@ -6,7 +6,6 @@ import com.kodilla.frontend.service.CalorieInfoService;
 import com.kodilla.frontend.ui.MainView;
 import com.kodilla.frontend.validate.ValidateFormField;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.notification.Notification;

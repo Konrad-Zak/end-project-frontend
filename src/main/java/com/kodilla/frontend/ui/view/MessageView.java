@@ -25,8 +25,8 @@ import java.time.LocalDate;
 @Route(value = "messageView", layout = MainView.class)
 public class MessageView extends VerticalLayout {
 
-    private final static String OK_NOTIFICATION = "Message was send";
-    private final static String NOT_OK_NOTIFICATION = "Something gone wrong";
+    private static final String OK_NOTIFICATION = "Message was send";
+    private static final String NOT_OK_NOTIFICATION = "Something gone wrong";
 
     private TextField emailField = new TextField("Email");
     private TextArea messageField = new TextArea("Your message to Admin");

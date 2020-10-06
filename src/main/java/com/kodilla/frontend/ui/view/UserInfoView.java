@@ -17,8 +17,8 @@ import com.vaadin.flow.server.VaadinSession;
 @Route(value = "userInfoView", layout = MainView.class)
 public class UserInfoView extends FormLayout {
 
-    private final static String OK_NOTIFICATION = "Name and email saved";
-    private final static String NOT_NOTIFICATION = "Name and email were not save";
+    private static final String OK_NOTIFICATION = "Name and email saved";
+    private static final String NOT_NOTIFICATION = "Name and email were not save";
     private TextField firstName = new TextField("First name");
     private EmailField email = new EmailField("Email");
     private Button create = new Button("Create");

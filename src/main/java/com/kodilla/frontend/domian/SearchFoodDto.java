@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchFoodDto {
+
     private String text;
     private List<ParsedDto> parsed;
 }

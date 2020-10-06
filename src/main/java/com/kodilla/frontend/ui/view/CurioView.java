@@ -15,10 +15,11 @@ import com.vaadin.flow.server.VaadinSession;
 @CssImport("./style.css")
 @Route(value = "curio", layout = MainView.class)
 public class CurioView extends VerticalLayout {
-    private final static String DEFAULT_TEXT = "Sorry but we do not have curio of today... Try later";
-    H1 curioHeader = new H1("Curio of current day: ");
-    H2 curioText =  new H2();
-    H3 curioYear = new H3();
+
+    private static final String DEFAULT_TEXT = "Sorry but we do not have curio of today... Try later";
+    private H1 curioHeader = new H1("Curio of current day: ");
+    private H2 curioText =  new H2();
+    private H3 curioYear = new H3();
     private CurioService curioService;
 
     public CurioView(CurioService curioService) {

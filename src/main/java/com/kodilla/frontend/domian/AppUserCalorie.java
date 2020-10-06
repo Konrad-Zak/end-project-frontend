@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AppUserCalorie {
+
     private Long id;
     private Double protein;
     private Double fat;
     private Double carbohydrates;
     private Double calories;
+
 }

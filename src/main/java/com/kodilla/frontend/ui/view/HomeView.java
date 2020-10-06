@@ -11,7 +11,7 @@ import com.vaadin.flow.router.Route;
 @Route(value = "", layout = MainView.class)
 public class HomeView extends VerticalLayout {
 
-    H1 h1 = new H1("Welcome in App nutritional ");
+    private H1 h1 = new H1("Welcome in App nutritional ");
 
     public HomeView() {
         addClassName("home-view");

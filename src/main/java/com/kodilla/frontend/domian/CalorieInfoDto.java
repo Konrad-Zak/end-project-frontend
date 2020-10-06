@@ -15,5 +15,4 @@ public class CalorieInfoDto {
     private Double appUserWeight;
     private Double appUserFitness;
     private AppUserCalorie appUserCalorie;
-
 }

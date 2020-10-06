@@ -15,10 +15,11 @@ import com.vaadin.flow.server.VaadinSession;
 @CssImport("./style.css")
 @Route(value = "curio", layout = MainView.class)
 public class CurioView extends VerticalLayout {
-    private final static String DEFAULT_TEXT = "Sorry but we are working for this section";
-    H1 curioHeader = new H1("Curio of current day: ");
-    H2 curioText =  new H2();
-    H3 curioYear = new H3();
+
+    private static final String DEFAULT_TEXT = "Sorry but we do not have curio of today... Try later";
+    private H1 curioHeader = new H1("Curio of current day: ");
+    private H2 curioText =  new H2();
+    private H3 curioYear = new H3();
     private CurioService curioService;
 
     public CurioView(CurioService curioService) {
@@ -34,16 +35,28 @@ public class CurioView extends VerticalLayout {
             curioYear.setText("Year: " + CurioDtoMap.getInstance().getCurioDtoByKey(VaadinSession.getCurrent()).getYear());
             add(curioHeader,curioText,curioYear);
         } else {
-            curioText.setText(DEFAULT_TEXT);
-            add(curioText);
+            notFoundCurioProcess();
         }
     }
 
     private void readCurio() {
         if(!CurioDtoMap.getInstance().getMap().containsKey(VaadinSession.getCurrent())){
-            CurioDto curioDto = curioService.getCurioDto();
-            CurioDtoMap.getInstance().addToMap(VaadinSession.getCurrent(),curioDto);
+            readCurioProcess();
         }
+    }
+
+    private void readCurioProcess() {
+        CurioDto curioDto = curioService.getCurioDto();
+        if(curioDto.getYear()!=null){
+            CurioDtoMap.getInstance().addToMap(VaadinSession.getCurrent(),curioDto);
+        } else {
+            notFoundCurioProcess();
+        }
+    }
+
+    private void notFoundCurioProcess() {
+        curioText.setText(DEFAULT_TEXT);
+        add(curioText);
     }
 
 }

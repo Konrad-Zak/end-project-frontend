@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AppUserInfoDto {
+
     private Long id;
     private String firstName;
     private String email;

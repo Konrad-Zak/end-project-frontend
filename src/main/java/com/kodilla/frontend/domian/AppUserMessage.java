@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 public class AppUserMessage {
+
     private String email;
     private String message;
     private LocalDate localDate;

@@ -16,7 +16,6 @@ public class AppUserMessageClient {
     private RestTemplate restTemplate;
     private BackendConfig backendConfig;
 
-
     public Boolean createNewMessage(AppUserMessage appUserMessage){
         URI uri = UriComponentsBuilder.fromHttpUrl(backendConfig.getBackendAppUserMessageEndpoint())
                 .build().encode().toUri();

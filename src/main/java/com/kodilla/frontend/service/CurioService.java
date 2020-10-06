@@ -11,7 +11,6 @@ public class CurioService {
 
     private CurioClient curioClient;
 
-
     public CurioDto getCurioDto() {
        return curioClient.getCurio();
     }

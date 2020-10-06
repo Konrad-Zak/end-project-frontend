@@ -20,8 +20,8 @@ import com.vaadin.flow.server.VaadinSession;
 @Route(value = "changePassword", layout = MainView.class)
 public class ChangePasswordView extends FormLayout {
 
-    private final static String OK_NOTIFICATION = "Password has been changed";
-    private final static String NOT_NOTIFICATION = "Change password error";
+    private static final String OK_NOTIFICATION = "Password has been changed";
+    private static final String NOT_NOTIFICATION = "Change password error";
 
     private TextField loginName = new TextField("Login");
     private PasswordField passwordField = new PasswordField("New password");

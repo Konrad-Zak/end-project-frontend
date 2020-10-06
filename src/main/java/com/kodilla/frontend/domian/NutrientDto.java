@@ -1,6 +1,7 @@
 package com.kodilla.frontend.domian;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,12 +10,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AppUserCalorie {
+public class NutrientDto {
 
-    private Long id;
-    private Double protein;
-    private Double fat;
-    private Double carbohydrates;
+    @JsonProperty("ENERC_KCAL")
     private Double calories;
 
+    @JsonProperty("PROCNT")
+    private Double protein;
+
+    @JsonProperty("FAT")
+    private Double fat;
+
+    @JsonProperty("CHOCDF")
+    private Double carbohydrates;
 }

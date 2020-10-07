@@ -83,8 +83,6 @@ public class MessageView extends VerticalLayout {
         sendButton.addClickListener(event -> {
             if(verifyFields()){
                 sendMessageProcess();
-            } else {
-                notOkNotification.open();
             }
         });
     }

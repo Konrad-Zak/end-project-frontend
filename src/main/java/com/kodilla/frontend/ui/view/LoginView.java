@@ -84,7 +84,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
 
     private boolean validateFieldsData() {
-        return validateFormField.validateUsernameField(registerView.getUsername().getValue()) &&
+        return validateFormField.validateUsernameField(registerView.getUsername().getValue()) &
                 validateFormField.validatePasswordField(registerView.getPassword().getValue());
     }
 

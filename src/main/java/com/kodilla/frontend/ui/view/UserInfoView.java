@@ -120,7 +120,7 @@ public class UserInfoView extends FormLayout {
     }
 
     private boolean verifyTextFields() {
-        return validateFormField.validateFirstNameField(firstName.getValue()) &&
+        return validateFormField.validateFirstNameField(firstName.getValue()) &
                 validateFormField.validateEmailField(email.getValue());
     }
 

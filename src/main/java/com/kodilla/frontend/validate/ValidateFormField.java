@@ -13,14 +13,12 @@ public class ValidateFormField {
     private static final int MIN_NUMBER_OF_CHARACTERS = 1;
 
     private static final String USERNAME_ERROR = "Login field is empty";
-    private static final String PASSWORD_ERROR = "Password field is empty";
     private static final String TEXT_ARENA_ERROR = "Too long message... Max characters: 200";
     private static final String VALUE_MAX_ERROR = "Value is greater than max";
     private static final String VALUE_MIN_ERROR = "Value is less than min";
     private static final String SEARCH_FIELD_ERROR = "Search food field is empty";
 
     private Notification validateUsernameError = new Notification(USERNAME_ERROR,2000);
-    private Notification validatePasswordError = new Notification(PASSWORD_ERROR, 2000);
     private Notification validateTextArenaError = new Notification(TEXT_ARENA_ERROR,2000);
     private Notification validateMaxValueError = new Notification(VALUE_MAX_ERROR,2000);
     private Notification validateMinValueError = new Notification(VALUE_MIN_ERROR, 2000);
@@ -38,9 +36,6 @@ public class ValidateFormField {
     }
 
     public boolean validatePasswordField(String password) {
-        if(password.length()<MIN_PASSWORD_LENGTH){
-            validatePasswordError.open();
-        }
         return password.length()>= MIN_PASSWORD_LENGTH && !password.equals(" ");
     }
 

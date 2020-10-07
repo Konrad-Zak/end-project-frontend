@@ -26,7 +26,7 @@ import java.time.LocalDate;
 public class MessageView extends VerticalLayout {
 
     private static final String OK_NOTIFICATION = "Message was send";
-    private static final String NOT_OK_NOTIFICATION = "Something gone wrong";
+    private static final String NOT_OK_NOTIFICATION = "Do not send message to admin";
 
     private TextField emailField = new TextField("Email");
     private TextArea messageField = new TextArea("Your message to Admin");
@@ -83,6 +83,8 @@ public class MessageView extends VerticalLayout {
         sendButton.addClickListener(event -> {
             if(verifyFields()){
                 sendMessageProcess();
+            } else {
+                notOkNotification.open();
             }
         });
     }
